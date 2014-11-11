@@ -1,0 +1,79 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class GhostMainController : MonoBehaviour {
+
+	public List<State> states;
+	public int stop;
+	public int nextElem;
+	public float currentTime = 0.0f;
+	public float locationPrecision = 0.3f;
+	public State nextState;
+	public float nextTimeGoal = 0.0f;
+	public bool init = false;
+
+	// Use this for initialization
+	void Start () {
+	}
+
+	public void Initialize(List<State> states){
+		this.states = states;
+		this.nextState = states[0];
+		this.stop = states.Count;
+		this.nextTimeGoal = nextState.stateTime;
+		nextElem = 1;
+		Debug.Log("Ghost was initialized");
+		init = true;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+		if(init){
+		Vector3 diff = nextState.getPosition()-this.transform.position;
+		diff.x = Mathf.Abs (diff.x);
+		diff.y = Mathf.Abs (diff.y);
+		diff.z = Mathf.Abs (diff.z);
+
+		if(!(diff.x < locationPrecision && diff.y < locationPrecision && diff.z < locationPrecision)){
+			if(currentTime >= nextState.stateTime){
+				GhostMovement movementComponent = GetComponent<GhostMovement>();
+				
+					if(movementComponent){ //sanity check
+					Vector3 direction = nextState.getPosition() - this.transform.position;
+					//direction = transform.TransformDirection(direction);
+					movementComponent.MoveTowards(direction, nextState.jump);
+				}else Debug.Log ("Ghost doesnt have a movement component");
+				
+			}//else Debug.Log("Something went horribly wrong");
+
+		}
+		else{
+
+			if(nextElem != stop){
+				if(currentTime >= nextState.stateTime){
+					//this.transform.position = nextState.getPosition();
+					//this.transform.rotation = nextState.getRotation();
+
+					this.nextState = states[nextElem];
+					this.nextTimeGoal = nextState.stateTime;
+					nextElem++;
+					
+					//Debug.Log ("Location reached!");
+				}
+					//else Debug.Log("Something went horribly wrong2");
+			}
+			else{
+
+				Debug.Log ("End of queue");
+				Destroy(gameObject);
+			}
+		}
+
+
+		currentTime += Time.deltaTime;
+		}
+	}
+	
+}
