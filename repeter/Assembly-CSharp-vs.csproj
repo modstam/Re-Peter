@@ -145,7 +145,8 @@
      <Compile Include="Assets\Scripts\Character\StateRecorder.cs" />
      <Compile Include="Assets\Scripts\Ghost\GhostMainController.cs" />
      <Compile Include="Assets\Scripts\Ghost\GhostMovement.cs" />
-     <Compile Include="Assets\Scripts\TransformUtility\TransformData.cs" />
+     <Compile Include="Assets\Scripts\Utility\FPSCounter.cs" />
+     <Compile Include="Assets\Scripts\Utility\TransformUtility\TransformData.cs" />
      <None Include="Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Sample Assets\Prototyping\Shaders\WorldCoord Diffuse.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\SamplePositions.shader" />
@@ -182,7 +183,7 @@
      <None Include="Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\ColorFilter.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>F:/Unity Projects/repeter/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>F:/GitHub/Re-Peter/repeter/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Users/modstam/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

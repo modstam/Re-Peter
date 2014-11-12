@@ -145,7 +145,8 @@
      <Compile Include="Assets\Scripts\Character\StateRecorder.cs" />
      <Compile Include="Assets\Scripts\Ghost\GhostMainController.cs" />
      <Compile Include="Assets\Scripts\Ghost\GhostMovement.cs" />
-     <Compile Include="Assets\Scripts\TransformUtility\TransformData.cs" />
+     <Compile Include="Assets\Scripts\Utility\FPSCounter.cs" />
+     <Compile Include="Assets\Scripts\Utility\TransformUtility\TransformData.cs" />
      <None Include="Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Sample Assets\Prototyping\Shaders\WorldCoord Diffuse.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\SamplePositions.shader" />

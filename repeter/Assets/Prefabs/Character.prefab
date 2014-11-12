@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: 0
   lastRecordTime: 0
-  recordingInterval: .5
+  recordingInterval: .0299999993
   currentStates: 0
 --- !u!114 &11400004
 MonoBehaviour:
