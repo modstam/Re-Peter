@@ -1,11 +1,11 @@
- .DS_Store
- repeter/Temp/*
- repeter/Library/previews/*
- repeter/Library/ScriptAssemblies/*
- repeter/Library/cache/*
- repeter/Library/metadata/*
- repeter/Library/*
- !repeter/Library/*.asset
- 
- *.userprefs
- *.sln
+.DS_Store
+repeter/Temp/*
+repeter/Library/previews/*
+repeter/Library/ScriptAssemblies/*
+repeter/Library/cache/*
+repeter/Library/metadata/*
+repeter/Library/*
+!repeter/Library/*.asset
+
+*.userprefs
+*.sln
