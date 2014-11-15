@@ -18,6 +18,7 @@ public class doorbutton : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		//Destroy(other.gameObject);
 		//Debug.Log("Collided with button");
+		Debug.Log(gameObject.name + " stepped on the button");
 		foreach (Transform child in transform)
 			child.gameObject.SetActive(false);
 	}

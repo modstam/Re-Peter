@@ -13,16 +13,18 @@ public class GhostMainController : MonoBehaviour {
 	public float nextTimeGoal = 0.0f;
 	public bool init = false;
 
+
 	// Use this for initialization
 	void Start () {
 	}
 
-	public void Initialize(List<State> states){
+	public void Initialize(List<State> states, int startState, int endState, float startTime){
 		this.states = states;
 		this.nextState = states[0];
-		this.stop = states.Count;
+		this.stop = endState;
 		this.nextTimeGoal = nextState.stateTime;
-		nextElem = 1;
+		this.currentTime = startTime;
+		nextElem = startState;
 		Debug.Log("Ghost was initialized");
 		init = true;
 	}
@@ -30,7 +32,7 @@ public class GhostMainController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(init){
+		if(init && nextElem < stop+1){
 		Vector3 diff = nextState.getPosition()-this.transform.position;
 		diff.x = Mathf.Abs (diff.x);
 		diff.y = Mathf.Abs (diff.y);
@@ -55,6 +57,9 @@ public class GhostMainController : MonoBehaviour {
 				this.transform.position = new Vector3(Mathf.Lerp (nextState.getPosition().x, this.transform.position.x, Time.deltaTime ),
 				                                      Mathf.Lerp (nextState.getPosition().y, this.transform.position.y, Time.deltaTime),
 				                                      Mathf.Lerp (nextState.getPosition().z, this.transform.position.z, Time.deltaTime));
+
+				this.transform.rotation= Quaternion.Lerp( this.transform.rotation ,nextState.getRotation(), Time.deltaTime );
+		                                    
 				//Time.deltaTime
 		}
 		else{
@@ -62,7 +67,7 @@ public class GhostMainController : MonoBehaviour {
 			if(nextElem != stop){
 				if(currentTime >= nextState.stateTime){
 					this.transform.position = nextState.getPosition();
-					this.transform.rotation = nextState.getRotation();
+					//this.transform.rotation = nextState.getRotation();
 
 					this.nextState = states[nextElem];
 					this.nextTimeGoal = nextState.stateTime;
@@ -83,5 +88,17 @@ public class GhostMainController : MonoBehaviour {
 		currentTime += Time.deltaTime;
 		}
 	}
+
+
+	
+	void OnCollisionEnter(Collision other){
+		Debug.Log("Entered collision with  " + other.gameObject.name);
+		if((other.gameObject.name == "First Person Character") || (other.gameObject.name == "Ghost")){
+			Physics.IgnoreCollision(gameObject.collider, other.gameObject.collider, true);
+		}
+		
+	}
+
+
 	
 }
