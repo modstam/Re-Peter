@@ -47,16 +47,17 @@ public class SceneFadeInOut : MonoBehaviour {
 			guiTexture.enabled = false;
 			sceneStarting = false;
 			isFading = false;
-			guiTexture.color.a = 1.0f;
+			//guiTexture.color.a = 1.0f;
 		}
 	}
 
 	public void EndScene(){
 
 		guiTexture.enabled = true;
+		guiTexture.color = Color.black;
 		FadeToBlack ();
 
-		if(guiTexture.color.a >= 0.30f){
+		if(guiTexture.color.a >= 0.95f){
 			sceneStarting = true;
 
 		}
