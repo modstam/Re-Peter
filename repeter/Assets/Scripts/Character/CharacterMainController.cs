@@ -13,7 +13,7 @@ public class CharacterMainController : MonoBehaviour {
 
 	TransformData spawnTransformData = new TransformData();
 	public int numberOfGhosts = 0;
-	public int nextSpawnState = 0;
+	public int nextSpawnState = 0;	
 	public float nextSpawnTime = 0;
 	public List<GhostState> ghosts = new List<GhostState>();
 	
