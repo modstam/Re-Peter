@@ -25,7 +25,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .95588237, g: .95588237, b: .95588237, a: 1}
+        second: {r: .757352948, g: 0, b: 0, a: .105882354}
       data:
         first:
           name: _BaseScale
