@@ -161,7 +161,9 @@
      <Compile Include="Assets\Scripts\Ghost\GhostMainController.cs" />
      <Compile Include="Assets\Scripts\Ghost\GhostMovement.cs" />
      <Compile Include="Assets\Scripts\Utility\FPSCounter.cs" />
+     <Compile Include="Assets\Scripts\Utility\SceneFadeInOut.cs" />
      <Compile Include="Assets\Scripts\Utility\TransformUtility\TransformData.cs" />
+     <Compile Include="Assets\Scripts\Utility\doorbutton.cs" />
      <Compile Include="Assets\Tuscany\Scripts\BirdsBehavior.cs" />
      <Compile Include="Assets\Tuscany\Scripts\BoatBehavior.cs" />
      <Compile Include="Assets\Tuscany\Scripts\Butterfly.cs" />
@@ -169,7 +171,6 @@
      <Compile Include="Assets\Tuscany\Scripts\RandomAnimationStart.cs" />
      <Compile Include="Assets\Tuscany\Scripts\ScrollUVs.cs" />
      <Compile Include="Assets\Tuscany\Water (Basic)\Sources\Scripts\WaterSimple.cs" />
-     <Compile Include="Assets\doorbutton.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Tuscany\Models\Materials\TransparentTerrain.shader" />
