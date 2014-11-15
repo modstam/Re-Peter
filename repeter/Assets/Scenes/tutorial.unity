@@ -9599,11 +9599,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 722856642}
-  - 143: {fileID: 722856644}
   - 114: {fileID: 722856643}
   - 114: {fileID: 722856645}
   - 114: {fileID: 722856646}
+  - 54: {fileID: 722856649}
   - 136: {fileID: 722856647}
+  - 114: {fileID: 722856648}
+  - 114: {fileID: 722856644}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -9646,21 +9648,24 @@ MonoBehaviour:
   speed: 6
   jumpSpeed: 8
   gravity: 20
---- !u!143 &722856644
-CharacterController:
+--- !u!114 &722856644
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 14300000, guid: 591a7a48e4ade9441a2b707d3a77555e,
+  m_PrefabParentObject: {fileID: 11400008, guid: 591a7a48e4ade9441a2b707d3a77555e,
     type: 2}
   m_PrefabInternal: {fileID: 1810141668}
   m_GameObject: {fileID: 722856641}
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: .5
-  m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadd54e4832aeef4b9359f44cbe335cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationRange: {x: 70, y: 70}
+  rotationSpeed: 10
+  dampingTime: .200000003
+  autoZeroVerticalOnMobile: 1
+  autoZeroHorizontalOnMobile: 0
+  relative: 1
 --- !u!114 &722856645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9690,6 +9695,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostPrefab: {fileID: 100000, guid: 4d64dc09767587e43a81f6f10742fb80, type: 2}
+  numberOfGhosts: 0
+  nextSpawnState: 0
+  nextSpawnTime: 0
 --- !u!136 &722856647
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9701,9 +9709,50 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &722856648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 591a7a48e4ade9441a2b707d3a77555e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1810141668}
+  m_GameObject: {fileID: 722856641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0df9a9d86fd853489f8817ca5901293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 8
+  strafeSpeed: 4
+  jumpPower: 5
+  walkByDefault: 1
+  walkSpeed: 3
+  advanced:
+    gravityMultiplier: 1
+    zeroFrictionMaterial: {fileID: 0}
+    highFrictionMaterial: {fileID: 0}
+    groundStickyEffect: 5
+  lockCursor: 1
+  moveSpeedMultiplier: 1
+  animSpeedMultiplier: 1
+--- !u!54 &722856649
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 591a7a48e4ade9441a2b707d3a77555e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1810141668}
+  m_GameObject: {fileID: 722856641}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &725760045
 GameObject:
   m_ObjectHideFlags: 0
