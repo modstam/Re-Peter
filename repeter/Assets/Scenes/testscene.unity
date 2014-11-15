@@ -281,7 +281,6 @@ MonoBehaviour:
   m_LightmapIndex: -1
   m_LightmapSize: 1024
   m_DrawTreesAndFoliage: 1
-  m_CollectDetailPatches: 1
   m_MaterialTemplate: {fileID: 2100000, guid: 896b6ff456a005842967631631a8ea42, type: 2}
 --- !u!4 &323159216
 Transform:
