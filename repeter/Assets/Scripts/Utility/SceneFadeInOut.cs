@@ -47,7 +47,6 @@ public class SceneFadeInOut : MonoBehaviour {
 			guiTexture.enabled = false;
 			sceneStarting = false;
 			isFading = false;
-			//guiTexture.color.a = 1.0f;
 		}
 	}
 
