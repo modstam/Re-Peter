@@ -76,7 +76,7 @@ public class moveSoundScript : MonoBehaviour {
 			bobFactor = 1-(bobFactor*.5f+1); // bob value is brought into 0-1 range and inverted
 			bobFactor *= bobFactor;	// bob value is biased towards 0
 
-			headBobCycle += ((flatVelocity) * (Time.deltaTime))/3;
+			headBobCycle += ((flatVelocity) * (Time.deltaTime))/4;
 
 			// fade head bob effect to zero if not moving
 			if (new Vector3(velocity.x,0,velocity.z).magnitude < 0.1f)

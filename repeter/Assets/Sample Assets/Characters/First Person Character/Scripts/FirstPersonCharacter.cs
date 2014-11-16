@@ -3,8 +3,8 @@ using System.Collections;
 
 public class FirstPersonCharacter : MonoBehaviour
 {
-	[SerializeField] private float runSpeed = 8f;                                       // The speed at which we want the character to move
-	[SerializeField] private float strafeSpeed = 4f;                                    // The speed at which we want the character to be able to strafe
+	[SerializeField] private float runSpeed = 5f;                                       // The speed at which we want the character to move
+	[SerializeField] private float strafeSpeed = 2f;                                    // The speed at which we want the character to be able to strafe
 	[SerializeField] private float jumpPower = 5f;                                      // The power behind the characters jump. increase for higher jumps
 	#if !MOBILE_INPUT
 	[SerializeField] private bool walkByDefault = true;									// controls how the walk/run modifier key behaves.
