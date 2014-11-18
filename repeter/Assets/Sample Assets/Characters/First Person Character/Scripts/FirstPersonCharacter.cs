@@ -45,6 +45,8 @@ public class FirstPersonCharacter : MonoBehaviour
 	Vector3 velocity;
 
 	Color[] virtualObjects;
+	public static bool seeVirtual;
+
 	
 	void Awake ()
 	{
@@ -103,7 +105,7 @@ public class FirstPersonCharacter : MonoBehaviour
 		// On mobile, it's controlled in analogue fashion by the v input value, and therefore needs no special handling.
 
 
-		bool seeVirtual =  Input.GetKey(KeyCode.LeftShift);
+		seeVirtual =  Input.GetKey(KeyCode.LeftShift);
 
 		GameObject[] gos;
 		gos = GameObject.FindGameObjectsWithTag("Virtual");
