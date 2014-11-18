@@ -43,6 +43,8 @@ public class FirstPersonCharacter : MonoBehaviour
 	float turnAmount;
 	float forwardAmount;
 	Vector3 velocity;
+
+	Color[] virtualObjects;
 	
 	void Awake ()
 	{
@@ -51,6 +53,14 @@ public class FirstPersonCharacter : MonoBehaviour
 		grounded = true;
 		Screen.lockCursor = lockCursor;
 		rayHitComparer = new RayHitComparer();
+
+		//initialize original render of virtual objects
+		GameObject[] gos = GameObject.FindGameObjectsWithTag("Virtual");
+		virtualObjects = new Color[gos.Length];
+		for(int i = 0; i < gos.Length; i++){
+			virtualObjects[i] = gos[i].GetComponent<MeshRenderer>().materials[0].color;
+		}
+
 	}
 
 	void OnDisable()
@@ -86,11 +96,25 @@ public class FirstPersonCharacter : MonoBehaviour
 		
 		// On standalone builds, walk/run speed is modified by a key press.
 		// We select appropriate speed based on whether we're walking by default, and whether the walk/run toggle button is pressed:
-		bool walkOrRun =  Input.GetKey(KeyCode.LeftShift);
+
+		bool walkOrRun =  false;//Input.GetKey(KeyCode.LeftShift);
 		speed = walkByDefault ? (walkOrRun ? runSpeed : walkSpeed) : (walkOrRun ? walkSpeed : runSpeed);
-		
+
 		// On mobile, it's controlled in analogue fashion by the v input value, and therefore needs no special handling.
-		
+
+
+		bool seeVirtual =  Input.GetKey(KeyCode.LeftShift);
+
+		GameObject[] gos;
+		gos = GameObject.FindGameObjectsWithTag("Virtual");
+		for(int i = 0; i < gos.Length; i++){
+			if(seeVirtual){
+				gos[i].GetComponent<MeshRenderer>().materials[0].color = Color.green;
+			} else {
+
+				gos[i].GetComponent<MeshRenderer>().materials[0].color = virtualObjects[i];
+			}
+		}
 
 #endif
 		
