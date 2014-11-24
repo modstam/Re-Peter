@@ -30,7 +30,7 @@ public class storytutorial : MonoBehaviour {
 		message = "You are dangerous to them, you can crack their prison";
 		tm.text = message;
 		yield return new WaitForSeconds(4);
-		message = "Behind you I've created a stone that will hack the door";
+		message = "Behind you I've created a brick that will hack your cell door";
 		tm.text = message;
 
 		//TODO Create loop till player made it
@@ -43,7 +43,7 @@ public class storytutorial : MonoBehaviour {
 		//TODO include yield 10 seconds
 
 		yield return new WaitForSeconds(5);
-		message = "You can see abnormalties in the world by holding down 'shift'";
+		message = "You can see abnormalities in the world by holding down 'shift'";
 		tm.text = message;
 		yield return new WaitForSeconds(4);
 		
