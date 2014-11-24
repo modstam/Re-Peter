@@ -37,12 +37,12 @@ public class storytutorial : MonoBehaviour {
 		yield return new WaitForSeconds(4);
 		message = "Create a spawning point by pressing 'Q'";
 		tm.text = message;
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(5);
 		message = "Go to the stone and press 'E' to relive your destiny";
 		tm.text = message;
 		//TODO include yield 10 seconds
 
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(5);
 		message = "You can see abnormalties in the world by holding down 'shift'";
 		tm.text = message;
 		yield return new WaitForSeconds(4);
