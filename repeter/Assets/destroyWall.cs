@@ -29,11 +29,10 @@ public class destroyWall : MonoBehaviour {
 	void OnMouseOver() {
 		if (FirstPersonCharacter.seeVirtual) {
 			if (Input.GetKey (KeyCode.E)) {
-				GameObject[] gos;
-				gos = GameObject.FindGameObjectsWithTag ("Button1");
-				for (int i = 0; i < gos.Length; i++) {
-					Destroy (gos [i]);
+				foreach (Transform child in transform) {
+					GameObject.Destroy(child.gameObject);
 				}
+
 			}
 		} else {
 			showMessage = false;
