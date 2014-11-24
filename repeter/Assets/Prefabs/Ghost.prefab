@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b266f059ae06e4bbad1f87556e646d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderDistance: 2
   stop: 0
   nextElem: 0
   currentTime: 0
