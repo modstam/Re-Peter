@@ -17,7 +17,7 @@ public class Emergency : MonoBehaviour {
 			StartCoroutine(FadeToBlack(l));
 			yield return new WaitForSeconds(Random.value);
 		}
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(5);
 		foreach (Transform child in transform) {
 			child.gameObject.audio.clip = powerUp;
 			child.gameObject.audio.volume = 0.3f;
