@@ -44,7 +44,8 @@ public class destroyWall : MonoBehaviour {
 	{
 		if ( showMessage )
 		{
-			GUI.Label(new Rect(Screen.width * 0.5f - 50f, Screen.height * 0.5f + 100f, 200f, 40f), message);
+			string style = "<color=white><size=20>"+ message + "</size></color>";
+			GUI.Label(new Rect(Screen.width * 0.5f - 100f, Screen.height * 0.5f + 100f, 200f, 40f),style);
 		}
 	}
 
