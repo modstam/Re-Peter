@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GhostMainController : MonoBehaviour {
 
 	public List<State> states;
+	public float renderDistance = 2.0f;
 	public int stop;
 	public int nextElem;
 	public float currentTime = 0.0f;
@@ -32,26 +33,21 @@ public class GhostMainController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		//Handle rendering
+		renderSwitch ();
+		
 		if(init && nextElem < stop+1){
 		Vector3 diff = nextState.getPosition()-this.transform.position;
 		diff.x = Mathf.Abs (diff.x);
 		diff.y = Mathf.Abs (diff.y);
 		diff.z = Mathf.Abs (diff.z);
 
+
+		
+
+
 		if(!(diff.x < locationPrecision && diff.y < locationPrecision && diff.z < locationPrecision)){
-			//if(currentTime >= nextState.stateTime){
-				//GhostMovement movementComponent = GetComponent<GhostMovement>();
-				
-			//		if(movementComponent){ //sanity check
-			//		Vector3 direction = nextState.getPosition() - this.transform.position;
-					//direction = transform.TransformDirection(direction);
-					//movementComponent.MoveTowards(direction, nextState.jump);
-					//this.transform.position = new Vector3(Mathf.Lerp (nextState.getPosition().x, this.transform.position.x, 0.5f),
-					//	                                  Mathf.Lerp (nextState.getPosition().y, this.transform.position.y, 0.5f),
-					//	                                      Mathf.Lerp (nextState.getPosition().z, this.transform.position.z, 0.5f));
-			//	}else Debug.Log ("Ghost doesnt have a movement component");
-				
-			//}//else Debug.Log("Something went horribly wrong");
+
 
 
 				this.transform.position = new Vector3(Mathf.Lerp (nextState.getPosition().x, this.transform.position.x, Time.deltaTime ),
@@ -60,7 +56,6 @@ public class GhostMainController : MonoBehaviour {
 
 				this.transform.rotation= Quaternion.Lerp( this.transform.rotation ,nextState.getRotation(), Time.deltaTime );
 		                                    
-				//Time.deltaTime
 		}
 		else{
 
@@ -97,6 +92,30 @@ public class GhostMainController : MonoBehaviour {
 			Physics.IgnoreCollision(gameObject.collider, other.gameObject.collider, true);
 		}
 		
+	}
+
+
+	private void renderSwitch(){
+		Transform camera = GameObject.Find ("First Person Camera").transform;
+		if(camera){
+			Vector3 normCamera = camera.position;
+			normCamera.Normalize();
+			Vector3 normThis = this.transform.position;
+			normThis.Normalize();
+			float distance = Vector3.Distance(camera.position, this.transform.position);
+
+			if(distance < renderDistance){
+				//distance = Vector3.Distance(normCamera, normThis);
+				Color color = this.renderer.material.color;
+				color.a = 1 - (1/distance);
+				this.renderer.material.color = color;
+			}
+			else if(distance > renderDistance){
+				Color color = this.renderer.material.color;
+				color.a = 1.0f;
+				this.renderer.material.color = color;
+			}
+		}
 	}
 
 

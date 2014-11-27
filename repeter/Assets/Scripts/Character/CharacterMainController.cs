@@ -21,8 +21,7 @@ public class CharacterMainController : MonoBehaviour {
 	bool initComplete = false;
 	// Use this for initialization
 	void Start () {
-		this.spawnTransformData.Clone(this.transform);
-		this.nextSpawnState = 0;
+		setSpawnPoint ();
 	}
 	
 	/**
@@ -36,7 +35,19 @@ public class CharacterMainController : MonoBehaviour {
 			spawnGhost();
 				
 		}
+
+		if(Input.GetKeyDown(KeyCode.Q)){
+			setSpawnPoint();
+		}
 	
+	}
+
+	public void setSpawnPoint(){
+		this.spawnTransformData.Clone(this.transform);
+		this.nextSpawnState = 0;
+		numberOfGhosts = 0;
+		ghosts.Clear ();
+		GetComponent<StateRecorder> ().getStates ().Clear ();
 	}
 
 	public void spawnGhost(){
