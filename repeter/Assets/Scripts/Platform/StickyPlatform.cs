@@ -18,18 +18,31 @@ public class StickyPlatform : MonoBehaviour {
 
 	public void moveTowards(Vector3 destination, float speed){
 
+
+
 		foreach(Rigidbody body in objectsOnPlatform){
+			Vector3 offset = this.transform.position - body.transform.position;
 			body.transform.position = Vector3.MoveTowards(body.transform.position, destination, speed);
+
+			//Vector3 newPos = (body.transform.position + offset);
+			//body.transform.position = newPos;
 		}
+
 		transform.position = Vector3.MoveTowards(transform.position, destination, speed);
+
+
 	}
 
 
 
 	void OnCollisionEnter(Collision collision){
-		Debug.Log("Found contact on platform");
+
 		if(collision.gameObject.rigidbody){ //Does this object have a rigid body?
-			objectsOnPlatform.Add(collision.gameObject.rigidbody); //add it to list
+			if(!objectsOnPlatform.Contains(collision.gameObject.rigidbody)){
+				Debug.Log("Rigidbody on platform");
+				objectsOnPlatform.Add(collision.gameObject.rigidbody); //add it to list
+			}
+	
 		}
 	}
 	

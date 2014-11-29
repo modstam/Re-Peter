@@ -37,48 +37,34 @@ public class GhostMainController : MonoBehaviour {
 		renderSwitch ();
 		
 		if(init && nextElem < stop+1){
-		Vector3 diff = nextState.getPosition()-this.transform.position;
-		diff.x = Mathf.Abs (diff.x);
-		diff.y = Mathf.Abs (diff.y);
-		diff.z = Mathf.Abs (diff.z);
-
-
-		
-
-
-		if(!(diff.x < locationPrecision && diff.y < locationPrecision && diff.z < locationPrecision)){
-
-
-
-				this.transform.position = new Vector3(Mathf.Lerp (nextState.getPosition().x, this.transform.position.x, Time.deltaTime ),
-				                                      Mathf.Lerp (nextState.getPosition().y, this.transform.position.y, Time.deltaTime),
-				                                      Mathf.Lerp (nextState.getPosition().z, this.transform.position.z, Time.deltaTime));
-
-				this.transform.rotation= Quaternion.Lerp( this.transform.rotation ,nextState.getRotation(), Time.deltaTime );
-		                                    
-		}
-		else{
 
 			if(nextElem != stop){
 				if(currentTime >= nextState.stateTime){
 					this.transform.position = nextState.getPosition();
 					//this.transform.rotation = nextState.getRotation();
+					this.transform.eulerAngles = new Vector3(0,nextState.getRotation().eulerAngles.y-180, 0);
+					//Debug.Log(nextState.getRotation().eulerAngles.x + ", \t" + nextState.getRotation().eulerAngles.y + ",\t" + nextState.getRotation().eulerAngles.z);
 
 					this.nextState = states[nextElem];
 					this.nextTimeGoal = nextState.stateTime;
 					nextElem++;
 					
 					//Debug.Log ("Location reached!");
+				}else{
+
+					this.transform.position = new Vector3(Mathf.Lerp (nextState.getPosition().x, this.transform.position.x, Time.deltaTime ),
+							                                      Mathf.Lerp (nextState.getPosition().y, this.transform.position.y, Time.deltaTime),
+							                                      Mathf.Lerp (nextState.getPosition().z, this.transform.position.z, Time.deltaTime));
+														
+					//this.transform.rotation= Quaternion.Lerp( this.transform.rotation ,nextState.getRotation(), Time.deltaTime );
 				}
-					//else Debug.Log("Something went horribly wrong2");
+
 			}
 			else{
 
 				Debug.Log ("End of queue");
 				Destroy(gameObject);
 			}
-		}
-
 
 		currentTime += Time.deltaTime;
 		}
