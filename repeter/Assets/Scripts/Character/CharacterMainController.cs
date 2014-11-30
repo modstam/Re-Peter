@@ -29,8 +29,9 @@ public class CharacterMainController : MonoBehaviour {
 	 */
 	void Update () {
 
+
 		if(Input.GetKeyDown(KeyCode.E)){
-			this.transform.rotation = spawnTransformData.getRotation();
+			this.transform.rotation = Quaternion.Euler(spawnTransformData.getRotation());
 			this.transform.position = spawnTransformData.getPosition();
 			spawnGhost();
 				
@@ -60,7 +61,7 @@ public class CharacterMainController : MonoBehaviour {
 
 		
 			foreach(GhostState state in ghosts){
-				ghost = Instantiate(ghostPrefab, spawnTransformData.getPosition(), spawnTransformData.getRotation()) as GameObject; 
+				ghost = Instantiate(ghostPrefab, spawnTransformData.getPosition(), Quaternion.Euler (spawnTransformData.getRotation())) as GameObject; 
 					if(ghost){
 						GhostMainController gc = ghost.GetComponent<GhostMainController>();
 						if(gc){ 

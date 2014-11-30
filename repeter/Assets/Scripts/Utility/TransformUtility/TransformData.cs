@@ -6,7 +6,6 @@ public class TransformData{
 	float posY;
 	float posZ;
 
-	float rotW;
 	float rotX;
 	float rotY;
 	float rotZ;
@@ -18,10 +17,10 @@ public class TransformData{
 		posY = tf.position.y;
 		posZ = tf.position.z;
 
-		rotW = tf.rotation.w;
-		rotX = tf.rotation.x;
-		rotY = tf.rotation.y;
-		rotZ = tf.rotation.z;
+		Vector3 eulerAngles = tf.eulerAngles;
+		rotX = eulerAngles.x;
+		rotY = eulerAngles.y;
+		rotZ = eulerAngles.z;
 	}
 
 
@@ -30,9 +29,9 @@ public class TransformData{
 	}
 
 
-	public Quaternion getRotation(){
+	public Vector3 getRotation(){
 
-		return new Quaternion(rotW,rotX,rotY,rotY);
+		return new Vector3(rotX,rotY,rotY);
 	}
 	
 }

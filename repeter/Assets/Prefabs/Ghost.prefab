@@ -3085,10 +3085,10 @@ Animator:
   m_GameObject: {fileID: 100030}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 09b4e486833f1a647b9faff8ddfb1f13, type: 3}
-  m_Controller: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
+  m_Controller: {fileID: 9100000, guid: fa6b1c66a0d3400478daa04702bbb1ee, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400002
@@ -3102,6 +3102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b266f059ae06e4bbad1f87556e646d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatedModel: {fileID: 100030}
+  anim: {fileID: 0}
   renderDistance: 2
   stop: 0
   nextElem: 0

@@ -1544,6 +1544,10 @@ Prefab:
       propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
+      propertyPath: recordingInterval
+      value: .00999999978
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400010, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}

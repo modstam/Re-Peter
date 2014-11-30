@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class GhostMainController : MonoBehaviour {
 
 	public List<State> states;
+	public GameObject animatedModel;
+	public Animator anim;
 	public float renderDistance = 2.0f;
 	public int stop;
 	public int nextElem;
@@ -17,6 +19,9 @@ public class GhostMainController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if(animatedModel){
+			anim = animatedModel.GetComponent<Animator>();
+		}
 	}
 
 	public void Initialize(List<State> states, int startState, int endState, float startTime){
@@ -35,14 +40,16 @@ public class GhostMainController : MonoBehaviour {
 
 		//Handle rendering
 		renderSwitch ();
+		//Handle animation
+		updateAnimations();
 		
-		if(init && nextElem < stop+1){
+		if(init){
 
 			if(nextElem != stop){
 				if(currentTime >= nextState.stateTime){
 					this.transform.position = nextState.getPosition();
 					//this.transform.rotation = nextState.getRotation();
-					this.transform.eulerAngles = new Vector3(0,nextState.getRotation().eulerAngles.y-180, 0);
+					this.transform.localEulerAngles = new Vector3(0.0f,nextState.getRotationEuler().y, 0.0f);
 					//Debug.Log(nextState.getRotation().eulerAngles.x + ", \t" + nextState.getRotation().eulerAngles.y + ",\t" + nextState.getRotation().eulerAngles.z);
 
 					this.nextState = states[nextElem];
@@ -70,6 +77,15 @@ public class GhostMainController : MonoBehaviour {
 		}
 	}
 
+	void updateAnimations(){
+		if(anim){
+			Vector3 velocity = new Vector3(nextState.velocity.x, 0.0f , nextState.velocity.z);
+			//Debug.Log(velocity.magnitude);
+			//velocity.Normalize();
+			//Debug.Log(velocity.magnitude*Time.deltaTime);
+			anim.SetFloat ("Speed", velocity.magnitude);
+		}
+	}
 
 	
 	void OnCollisionEnter(Collision other){

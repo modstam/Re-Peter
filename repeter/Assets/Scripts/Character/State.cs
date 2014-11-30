@@ -21,7 +21,11 @@ public class State {
 		return stateTransform.getPosition();
 	}
 
-	public Quaternion getRotation(){
+	public Quaternion getRotationQuaternion(){
+		return Quaternion.Euler (stateTransform.getRotation());
+	}
+
+	public Vector3 getRotationEuler(){
 		return stateTransform.getRotation();
 	}
 
