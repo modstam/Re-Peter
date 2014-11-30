@@ -27,6 +27,8 @@ public class FirstPersonCharacter : MonoBehaviour
 
 	private const float jumpRayLength = 0.7f;                                           // The length of the ray used for testing against the ground when jumping
 	public bool grounded { get; private set; }
+	public bool jump { get; private set; }
+	public bool jumpedThisFrame { get; private set; }
 	private Vector2 input;
 	private IComparer rayHitComparer;
 
@@ -87,7 +89,8 @@ public class FirstPersonCharacter : MonoBehaviour
 #if CROSS_PLATFORM_INPUT
 		float h = CrossPlatformInput.GetAxis("Horizontal");
 		float v = CrossPlatformInput.GetAxis("Vertical");
-		bool jump = CrossPlatformInput.GetButton("Jump");
+		jump = CrossPlatformInput.GetButton("Jump");
+		jumpedThisFrame = false;
 #else
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
@@ -135,6 +138,7 @@ public class FirstPersonCharacter : MonoBehaviour
 		if (grounded && jump) {
 			yv += jumpPower;
 			grounded = false;
+			jumpedThisFrame = true;
 		}
 		
 		// Set the rigidbody's velocity according to the ground angle and desired move

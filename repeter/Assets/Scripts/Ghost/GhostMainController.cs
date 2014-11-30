@@ -84,6 +84,8 @@ public class GhostMainController : MonoBehaviour {
 			//velocity.Normalize();
 			//Debug.Log(velocity.magnitude*Time.deltaTime);
 			anim.SetFloat ("Speed", velocity.magnitude);
+			anim.SetBool ("Jump", nextState.jump);
+			anim.SetBool ("isGrounded", nextState.grounded);
 		}
 	}
 

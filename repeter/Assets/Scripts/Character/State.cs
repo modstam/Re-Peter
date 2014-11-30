@@ -7,14 +7,16 @@ public class State {
 	public float stateTime;
 	public Vector3 velocity = new Vector3();
 	public bool jump;
+	public bool grounded;
 
-	public State(float time, TransformData transform, Vector3 velocity, bool jump){
+	public State(float time, TransformData transform, Vector3 velocity, bool jump, bool isGrounded){
 		this.stateTime = time;
 		this.stateTransform = transform;
 		this.velocity.x = velocity.x;
 		this.velocity.y = velocity.y;
 		this.velocity.z = velocity.z;
 		this.jump = jump;
+		this.grounded = isGrounded;
 	}
 	
 	public Vector3 getPosition(){
