@@ -54,8 +54,7 @@ public class CharacterMainController : MonoBehaviour {
 	public void spawnGhost(){
 		if(ghostPrefab){
 			GameObject ghost;
-
-			bool jump = Input.GetButton("Jump");
+		
 
 			ghosts.Add(new GhostState(nextSpawnState,
 			                       	  GetComponent<StateRecorder>().getStates().Count,
