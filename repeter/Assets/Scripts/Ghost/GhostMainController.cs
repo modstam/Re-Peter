@@ -7,7 +7,7 @@ public class GhostMainController : MonoBehaviour {
 	public List<State> states;
 	public GameObject animatedModel;
 	public Animator anim;
-	public float renderDistance = 2.0f;
+	public float renderDistance = 3.0f;
 	public int stop;
 	public int nextElem;
 	public float currentTime = 0.0f;
@@ -40,10 +40,11 @@ public class GhostMainController : MonoBehaviour {
 
 		//Handle rendering
 		renderSwitch ();
-		//Handle animation
-		updateAnimations();
-		
+				
 		if(init){
+
+			//Handle animation
+			updateAnimations();
 
 			if(nextElem != stop){
 				if(currentTime >= nextState.stateTime){
@@ -102,22 +103,34 @@ public class GhostMainController : MonoBehaviour {
 	private void renderSwitch(){
 		Transform camera = GameObject.Find ("First Person Camera").transform;
 		if(camera){
-			Vector3 normCamera = camera.position;
-			normCamera.Normalize();
-			Vector3 normThis = this.transform.position;
-			normThis.Normalize();
 			float distance = Vector3.Distance(camera.position, this.transform.position);
 
+
 			if(distance < renderDistance){
-				//distance = Vector3.Distance(normCamera, normThis);
-				Color color = this.renderer.material.color;
-				color.a = 1 - (1/distance);
-				this.renderer.material.color = color;
+
+				Renderer[] renderers = GetComponentsInChildren<Renderer>();									
+				foreach(Renderer renderer in renderers){
+					Material[] materials = renderer.materials;
+					foreach(Material material in materials){
+						Color color = material.color;
+						color.a = 1.0f - (1.0f/distance);
+						material.color = color;
+						//renderer.enabled = false;
+					}	
+				}
+
 			}
-			else if(distance > renderDistance){
-				Color color = this.renderer.material.color;
-				color.a = 1.0f;
-				this.renderer.material.color = color;
+			else if(distance > renderDistance && distance < renderDistance + 2){
+				Renderer[] renderers = GetComponentsInChildren<Renderer>();		
+				foreach(Renderer renderer in renderers){
+					Material[] materials = renderer.materials;
+					foreach(Material material in materials){
+						Color color = material.color;
+						color.a = 1.0f;
+						material.color = color;
+						//renderer.enabled = true;
+					}	
+				}	
 			}
 		}
 	}
