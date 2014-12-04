@@ -265,6 +265,58 @@ ModelImporter:
     4300098: object_7
     4300100: object_8
     4300102: object_9
+    6400000: object_1
+    6400002: object_10
+    6400004: object_11
+    6400006: object_12
+    6400008: object_13
+    6400010: object_14
+    6400012: object_15
+    6400014: object_16
+    6400016: object_17
+    6400018: object_18
+    6400020: object_19
+    6400022: object_2
+    6400024: object_20
+    6400026: object_21
+    6400028: object_22
+    6400030: object_23
+    6400032: object_24
+    6400034: object_25
+    6400036: object_26
+    6400038: object_27
+    6400040: object_28
+    6400042: object_29
+    6400044: object_3
+    6400046: object_30
+    6400048: object_31
+    6400050: object_32
+    6400052: object_33
+    6400054: object_34
+    6400056: object_35
+    6400058: object_36
+    6400060: object_37
+    6400062: object_38
+    6400064: object_39
+    6400066: object_4
+    6400068: object_40
+    6400070: object_41
+    6400072: object_42
+    6400074: object_43
+    6400076: object_44
+    6400078: object_45
+    6400080: object_46
+    6400082: object_47
+    6400084: object_48
+    6400086: object_49
+    6400088: object_5
+    6400090: object_50
+    6400092: object_51
+    6400094: object_52
+    6400096: object_6
+    6400098: object_7
+    6400100: object_8
+    6400102: object_9
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -285,9 +337,9 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .0599999987
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
