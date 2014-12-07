@@ -727,6 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostPrefab: {fileID: 100000, guid: 4d64dc09767587e43a81f6f10742fb80, type: 2}
   numberOfGhosts: 0
+  limitOfGhosts: 2
   nextSpawnState: 0
   nextSpawnTime: 0
 --- !u!114 &115547116
@@ -6297,6 +6298,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
       propertyPath: recordingInterval
       value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
+      propertyPath: limitOfGhosts
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400010, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
