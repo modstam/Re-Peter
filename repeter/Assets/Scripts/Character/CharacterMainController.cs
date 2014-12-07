@@ -13,9 +13,11 @@ public class CharacterMainController : MonoBehaviour {
 
 	TransformData spawnTransformData = new TransformData();
 	public int numberOfGhosts = 0;
+	public int limitOfGhosts = 0;
 	public int nextSpawnState = 0;	
 	public float nextSpawnTime = 0;
 	public List<GhostState> ghosts = new List<GhostState>();
+	private bool cantSpawn = false;
 	
 
 	bool initComplete = false;
@@ -31,10 +33,15 @@ public class CharacterMainController : MonoBehaviour {
 
 
 		if(Input.GetKeyDown(KeyCode.E)){
-			this.transform.rotation = Quaternion.Euler(spawnTransformData.getRotation());
-			this.transform.position = spawnTransformData.getPosition();
-			spawnGhost();
-				
+			Debug.Log(numberOfGhosts + " " + limitOfGhosts);
+			if(numberOfGhosts < limitOfGhosts){
+				this.transform.rotation = Quaternion.Euler(spawnTransformData.getRotation());
+				this.transform.position = spawnTransformData.getPosition();
+				spawnGhost();
+			} else {
+				cantSpawnOn();
+				Invoke("cantSpawnOff", 3);
+			}				
 		}
 
 		if(Input.GetKeyDown(KeyCode.Q)){
@@ -55,7 +62,7 @@ public class CharacterMainController : MonoBehaviour {
 		if(ghostPrefab){
 			GameObject ghost;
 		
-
+			numberOfGhosts++;
 			ghosts.Add(new GhostState(nextSpawnState,
 			                       	  GetComponent<StateRecorder>().getStates().Count,
 			                          GetComponent<StateRecorder>().getStates()[nextSpawnState].stateTime));
@@ -95,6 +102,21 @@ public class CharacterMainController : MonoBehaviour {
 			
 	}
 
+	void OnGUI()
+	{
+		if ( cantSpawn )
+		{
+			string style = "<color=white><size=20>Maximum number of Ghosts. Press Q to reset.</size></color>";
+			GUI.Label(new Rect(Screen.width * 0.15f, Screen.height * 0.5f + 100f, Screen.width * 0.7f, 40f),style);
 
+		}
+	}
+
+	public void cantSpawnOn() {
+		cantSpawn = true;
+	}
+	public void cantSpawnOff() {
+		cantSpawn = false;
+	}
 	
 }
