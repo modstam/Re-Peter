@@ -16,18 +16,19 @@ public class timeLineStarter : MonoBehaviour {
 	
 	}
 
-	public void postTimeLine(int start, int end){
-		StateRecorder stateRecorder = GameObject.FindWithTag("First Person Character").GetComponent<StateRecorder>();
+	public void postTimeLine(int start, int end, float startTime){
+		StateRecorder stateRecorder = GameObject.Find("First Person Character").GetComponent<StateRecorder>();
 		states = stateRecorder.getStates();
 		foreach(GameObject gameobj in timeLines){
 			TimeLine timeLine = gameobj.GetComponent<TimeLine>();
 			if(!timeLine.isRunning){
-				foreach(State state in states){
+				for(int i = start; i < end; i++){
+					State state = states[i];
 					if(state.jump){
-						timeLine.placeEvent("Jump",state.stateTime);
+						timeLine.placeEvent("Jump",state.stateTime- startTime);
 					}
 				}
-				break;
+				return;
 			}
 		}
 	}

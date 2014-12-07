@@ -5,41 +5,41 @@ public class TimeLine : MonoBehaviour {
 
 	public Vector3 startPosition;
 	public Vector3 endPosition;
+	private float anchorLeft;
 	public Material material;
 	private LineRenderWrapper timeLine;
 	private List<LineRenderWrapper> events = new List<LineRenderWrapper>();
-	private float hScale = 3.0f;
-	private float wScale = 1.0f;
+	public float hScale = 3.0f;
 	public bool isRunning = false;
 	// Use this for initialization
 	void Start () {
+		Mesh mesh = GetComponent<MeshFilter>().mesh;
 		timeLine = new LineRenderWrapper();
 		timeLine.line = gameObject.AddComponent<LineRenderer>();
-
 		if(!timeLine.line || !material){
 			Debug.Log("TimeLine: Line couldn't be instantiated");
 			return;
 		}
-
+		anchorLeft = (mesh.bounds.min.x * transform.localScale.x)-1f;
 		timeLine.line.material = material;
 		timeLine.line.material.color = Color.black;
 		timeLine.line.SetColors(Color.black, Color.black);
-		timeLine.line.SetWidth(0.02F*wScale, 0.02F*wScale);
+		timeLine.line.SetWidth(0.04F, 0.04F);
 		timeLine.line.SetVertexCount(2);
 		timeLine.line.useWorldSpace = false;
 
-		Mesh mesh = GetComponent<MeshFilter>().mesh;
+
 		LineRenderWrapper line = new LineRenderWrapper();
 		line.gameObject = new GameObject("GreenLine");
 		line.gameObject.transform.parent = this.transform;
 		line.line = line.gameObject.AddComponent<LineRenderer>();
 		line.line.material = material;
 		line.line.material.color = Color.green;
-		line.line.SetWidth(0.1F*wScale, 0.1F*wScale);
+		line.line.SetWidth(0.1F, 0.1F);
 		line.line.SetVertexCount(2);
 		line.line.useWorldSpace = false;
-		line.start = new Vector3(-2.5f , transform.position.y+(mesh.bounds.max.y/hScale+0.25f), transform.position.z-0.65f);
-		line.end = new Vector3(-2.5f, transform.position.y-(mesh.bounds.max.y/hScale+0.25f), transform.position.z-0.65f);
+		line.start = new Vector3(anchorLeft, transform.position.y+(mesh.bounds.max.y/hScale+0.25f), transform.position.z-0.65f);
+		line.end = new Vector3(anchorLeft, transform.position.y-(mesh.bounds.max.y/hScale+0.25f), transform.position.z-0.65f);
 		line.line.SetColors(Color.green, Color.green);
 		line.line.SetPosition(0,line.start);
 		line.line.SetPosition(1,line.end);
@@ -69,11 +69,11 @@ public class TimeLine : MonoBehaviour {
 		if(line.line && line.gameObject){
 			line.line.material = material;
 			line.line.material.color = Color.red;
-			line.line.SetWidth(0.1F*wScale, 0.1F*wScale);
+			line.line.SetWidth(0.1F, 0.1F);
 			line.line.SetVertexCount(2);
 			line.line.useWorldSpace = false;
-			line.start = new Vector3(-2.5f + time , transform.position.y+(mesh.bounds.max.y/hScale), -0.6f);
-			line.end = new Vector3(-2.5f + time, transform.position.y-(mesh.bounds.max.y/hScale), -0.6f);
+			line.start = new Vector3(anchorLeft + time , transform.position.y+(mesh.bounds.max.y/hScale), transform.position.z-0.6f);
+			line.end = new Vector3(anchorLeft + time, transform.position.y-(mesh.bounds.max.y/hScale), transform.position.z-0.6f);
 			line.line.SetColors(Color.black, Color.black);
 			events.Add (line);
 		}
@@ -102,14 +102,14 @@ public class TimeLine : MonoBehaviour {
 			line.line.SetPosition(0,line.start);
 			line.line.SetPosition(1,line.end);
 
-			if(line.start.x > 2.5f){
+			if(line.start.x > -anchorLeft){
 				line.gameObject.SetActive(false);
 			}
 			else{
 				line.gameObject.SetActive(true);
 			}
 
-			if(line.start.x < -2.5f){
+			if(line.start.x < anchorLeft){
 				linesToRemove.Add (line);
 			}
 		}
@@ -143,6 +143,6 @@ public class TimeLine : MonoBehaviour {
 			events.Remove (line);
 			Destroy(line.gameObject);
 		}
-		events.Clear ();
+		events = new List<LineRenderWrapper>();
 	}
 }
