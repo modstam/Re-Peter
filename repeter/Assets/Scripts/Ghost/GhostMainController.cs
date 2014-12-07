@@ -6,6 +6,7 @@ public class GhostMainController : MonoBehaviour {
 
 	public List<State> states;
 	public GameObject animatedModel;
+	public GameObject timeLine;
 	public Animator anim;
 	public float renderDistance = 3.0f;
 	public int stop;
@@ -32,6 +33,16 @@ public class GhostMainController : MonoBehaviour {
 		this.currentTime = startTime;
 		nextElem = startState;
 		Debug.Log("Ghost was initialized");
+		if(timeLine){
+			GameObject tl = Instantiate(timeLine, new Vector3(0,2,0), Quaternion.identity) as GameObject;
+			TimeLine time = tl.GetComponent<TimeLine>();
+			foreach(State state in states){
+				if(state.jump){
+					time.placeEvent("Jump", state.stateTime);
+				}			
+			}
+		}
+
 		init = true;
 	}
 	
