@@ -15,7 +15,7 @@ public class SceneFadeInOut : MonoBehaviour {
 
 	void Update(){
 		if(!isFading){
-			if(Input.GetKeyDown(KeyCode.E)){
+			if(Input.GetButtonDown("SpawnGhost")){
 				isFading = true;
 			}
 		}

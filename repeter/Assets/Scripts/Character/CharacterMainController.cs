@@ -13,7 +13,7 @@ public class CharacterMainController : MonoBehaviour {
 
 	TransformData spawnTransformData = new TransformData();
 	public int numberOfGhosts = 0;
-	public int limitOfGhosts = 0;
+	public int limitOfGhosts;
 	public int nextSpawnState = 0;	
 	public float nextSpawnTime = 0;
 	public List<GhostState> ghosts = new List<GhostState>();
@@ -32,7 +32,7 @@ public class CharacterMainController : MonoBehaviour {
 	void Update () {
 
 
-		if(Input.GetKeyDown(KeyCode.E)){
+		if(Input.GetButtonDown("SpawnGhost")){
 			Debug.Log(numberOfGhosts + " " + limitOfGhosts);
 			if(numberOfGhosts < limitOfGhosts){
 				this.transform.rotation = Quaternion.Euler(spawnTransformData.getRotation());
@@ -44,7 +44,7 @@ public class CharacterMainController : MonoBehaviour {
 			}				
 		}
 
-		if(Input.GetKeyDown(KeyCode.Q)){
+		if(Input.GetButtonDown("ResetGhost")){
 			setSpawnPoint();
 		}
 	
