@@ -10,6 +10,7 @@ public class TimeLine : MonoBehaviour {
 	private List<LineRenderWrapper> events = new List<LineRenderWrapper>();
 	private float hScale = 3.0f;
 	private float wScale = 1.0f;
+	public bool isRunning = false;
 	// Use this for initialization
 	void Start () {
 		timeLine = new LineRenderWrapper();
@@ -57,8 +58,9 @@ public class TimeLine : MonoBehaviour {
 		drawTimeLine();
 
 	}
-
+	
 	public void placeEvent(string e, float time){
+		isRunning = true;
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
 		LineRenderWrapper line = new LineRenderWrapper();
 		line.gameObject = new GameObject("Line");
@@ -132,6 +134,7 @@ public class TimeLine : MonoBehaviour {
 	}
 
 	public void reset(){
+		isRunning = false;
 		List<LineRenderWrapper> linesToRemove = new List<LineRenderWrapper>();
 		foreach(LineRenderWrapper line in events){
 			linesToRemove.Add (line);
