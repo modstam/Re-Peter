@@ -77,6 +77,7 @@ public class CharacterMainController : MonoBehaviour {
 			                       	  GetComponent<StateRecorder>().getStates().Count,
 			                          GetComponent<StateRecorder>().getStates()[nextSpawnState].stateTime));
 			clearGhosts();
+			resetTimeLines();
 			foreach(GhostState state in ghosts){
 				ghost = Instantiate(ghostPrefab, spawnTransformData.getPosition(), Quaternion.Euler (spawnTransformData.getRotation())) as GameObject; 
 					if(ghost){
@@ -90,9 +91,14 @@ public class CharacterMainController : MonoBehaviour {
 
 							nextSpawnState = GetComponent<StateRecorder>().getStates().Count;	
 							Debug.Log("Successfully spawned ghost");
+							
+						startTimeLine(state.spawnState, state.endState, state.startTime);
+
 						}else Debug.Log("Coulnd't initialize ghost");
+
 					}
 			}
+			UpdateCollisions();
 		
 		}
 		else Debug.Log("Ghost-prefa\tb not set in CharacterController");
@@ -127,6 +133,36 @@ public class CharacterMainController : MonoBehaviour {
 	}
 	public void cantSpawnOff() {
 		cantSpawn = false;
+	}
+
+	public void startTimeLine(int start, int end, float startTime){
+		GameObject timelines = GameObject.Find("TimeLines");
+		if(timelines){
+			timeLineStarter tlstart = timelines.GetComponent<timeLineStarter>();
+			tlstart.postTimeLine(start,end, startTime);
+		}
+		else{
+			Debug.Log ("No 'TimeLines'-object found in scene");
+		}
+	}
+
+	public void resetTimeLines(){
+		GameObject timelines = GameObject.Find("TimeLines");
+		if(timelines){
+			timeLineStarter tlstart = timelines.GetComponent<timeLineStarter>();
+			tlstart.reset ();
+		}
+		else{
+			Debug.Log ("No 'TimeLines'-object found in scene");
+		}
+	}
+
+	void UpdateCollisions(){
+		GameObject[] ghosts = GameObject.FindGameObjectsWithTag("Ghost");
+
+		foreach(GameObject ghost in ghosts){
+			Physics.IgnoreCollision(ghost.collider, this.collider, true);
+		}
 	}
 	
 }

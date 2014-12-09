@@ -10,6 +10,7 @@ TagManager:
   - Fader
   - Virtual
   - Button1
+  - Ghost
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
