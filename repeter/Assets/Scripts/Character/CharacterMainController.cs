@@ -17,6 +17,7 @@ public class CharacterMainController : MonoBehaviour {
 	public int nextSpawnState = 0;	
 	public float nextSpawnTime = 0;
 	public List<GhostState> ghosts = new List<GhostState>();
+	public List<GhostMainController> gcs = new List<GhostMainController>();
 	private bool cantSpawn = false;
 	
 
@@ -54,8 +55,17 @@ public class CharacterMainController : MonoBehaviour {
 		this.spawnTransformData.Clone(this.transform);
 		this.nextSpawnState = 0;
 		numberOfGhosts = 0;
+		clearGhosts ();
 		ghosts.Clear ();
 		GetComponent<StateRecorder> ().getStates ().Clear ();
+	}
+
+	void clearGhosts ()
+	{
+		foreach(GhostMainController gc in gcs){
+			gc.kill();
+		}
+		gcs.Clear();
 	}
 
 	public void spawnGhost(){
@@ -66,12 +76,12 @@ public class CharacterMainController : MonoBehaviour {
 			ghosts.Add(new GhostState(nextSpawnState,
 			                       	  GetComponent<StateRecorder>().getStates().Count,
 			                          GetComponent<StateRecorder>().getStates()[nextSpawnState].stateTime));
-
-		
+			clearGhosts();
 			foreach(GhostState state in ghosts){
 				ghost = Instantiate(ghostPrefab, spawnTransformData.getPosition(), Quaternion.Euler (spawnTransformData.getRotation())) as GameObject; 
 					if(ghost){
 						GhostMainController gc = ghost.GetComponent<GhostMainController>();
+						gcs.Add(gc);
 						if(gc){ 
 							gc.Initialize(GetComponent<StateRecorder>().getStates()
 								          ,state.spawnState,
