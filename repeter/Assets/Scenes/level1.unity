@@ -730,6 +730,7 @@ MonoBehaviour:
   limitOfGhosts: 2
   nextSpawnState: 0
   nextSpawnTime: 0
+  gcs: []
 --- !u!114 &115547116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2717,7 +2718,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: .600000024, z: 2}
+  m_Size: {x: 2.5, y: .600000024, z: 2.5}
   m_Center: {x: 0, y: -.25, z: 0}
 --- !u!1 &362594069
 GameObject:
@@ -7237,7 +7238,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: .600000024, z: 2}
+  m_Size: {x: 2.5, y: .600000024, z: 2.5}
   m_Center: {x: 0, y: -.25, z: 0}
 --- !u!114 &1128500579
 MonoBehaviour:
@@ -9573,7 +9574,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: .600000024, z: 2}
+  m_Size: {x: 2.5, y: .600000024, z: 2.5}
   m_Center: {x: 0, y: -.25, z: 0}
 --- !u!1 &1455163735
 GameObject:
