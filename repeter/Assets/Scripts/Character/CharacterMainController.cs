@@ -122,8 +122,10 @@ public class CharacterMainController : MonoBehaviour {
 	{
 		if ( cantSpawn )
 		{
+			var centeredStyle = GUI.skin.GetStyle("Label");
+			centeredStyle.alignment = TextAnchor.UpperCenter;
 			string style = "<color=white><size=20>Maximum number of Ghosts. Press Q to reset.</size></color>";
-			GUI.Label(new Rect(Screen.width * 0.15f, Screen.height * 0.5f + 100f, Screen.width * 0.7f, 40f),style);
+			GUI.Label(new Rect(Screen.width * 0.05f, Screen.height * 0.8f, Screen.width * 0.9f, Screen.height * 0.9f),style,centeredStyle);
 
 		}
 	}
