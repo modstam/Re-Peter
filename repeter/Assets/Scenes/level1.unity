@@ -727,8 +727,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostPrefab: {fileID: 100000, guid: 4d64dc09767587e43a81f6f10742fb80, type: 2}
   numberOfGhosts: 0
+  limitOfGhosts: 2
   nextSpawnState: 0
   nextSpawnTime: 0
+  gcs: []
 --- !u!114 &115547116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2716,7 +2718,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: .600000024, z: 2}
+  m_Size: {x: 2.5, y: .600000024, z: 2.5}
   m_Center: {x: 0, y: -.25, z: 0}
 --- !u!1 &362594069
 GameObject:
@@ -6298,6 +6300,10 @@ Prefab:
       propertyPath: recordingInterval
       value: .00999999978
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
+      propertyPath: limitOfGhosts
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400010, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
@@ -7232,7 +7238,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: .600000024, z: 2}
+  m_Size: {x: 2.5, y: .600000024, z: 2.5}
   m_Center: {x: 0, y: -.25, z: 0}
 --- !u!114 &1128500579
 MonoBehaviour:
@@ -9568,7 +9574,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: .600000024, z: 2}
+  m_Size: {x: 2.5, y: .600000024, z: 2.5}
   m_Center: {x: 0, y: -.25, z: 0}
 --- !u!1 &1455163735
 GameObject:

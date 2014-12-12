@@ -15,6 +15,7 @@ public class GhostMainController : MonoBehaviour {
 	public State nextState;
 	public float nextTimeGoal = 0.0f;
 	public bool init = false;
+	public bool alive;
 
 
 	// Use this for initialization
@@ -32,7 +33,9 @@ public class GhostMainController : MonoBehaviour {
 		this.currentTime = startTime;
 		nextElem = startState;
 		Debug.Log("Ghost was initialized");
+		alive = true;
 		init = true;
+
 	}
 	
 	// Update is called once per frame
@@ -45,8 +48,7 @@ public class GhostMainController : MonoBehaviour {
 
 			//Handle animation
 			updateAnimations();
-
-			if(nextElem != stop){
+			if(nextElem != stop && alive){
 				if(currentTime >= nextState.stateTime){
 					this.transform.position = nextState.getPosition();
 					//this.transform.rotation = nextState.getRotation();
@@ -76,6 +78,10 @@ public class GhostMainController : MonoBehaviour {
 
 		currentTime += Time.deltaTime;
 		}
+	}
+
+	public void kill(){
+		alive = false;
 	}
 
 	void updateAnimations(){

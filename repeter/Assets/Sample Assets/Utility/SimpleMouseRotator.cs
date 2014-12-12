@@ -44,8 +44,8 @@ public class SimpleMouseRotator : MonoBehaviour {
 		if (relative)
 		{
 			#if CROSS_PLATFORM_INPUT
-			inputH = CrossPlatformInput.GetAxis("Mouse X");
-			inputV = CrossPlatformInput.GetAxis("Mouse Y");
+			inputH = CrossPlatformInput.GetAxis("Mouse X") + Input.GetAxis("Xbox360ControllerRightX");
+			inputV = CrossPlatformInput.GetAxis("Mouse Y") - Input.GetAxis("Xbox360ControllerRightY");
 			#else
 			inputH = Input.GetAxis("Mouse X");
 			inputV = Input.GetAxis("Mouse Y");
