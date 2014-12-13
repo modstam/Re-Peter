@@ -309,7 +309,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 84cad922d8e199044aa55b5421bfc4a3, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 84cad922d8e199044aa55b5421bfc4a3, type: 2}
       propertyPath: m_LocalPosition.x
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd25d8786a9d6db48aa4c65767826bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostPrefab: {fileID: 100000, guid: 4d64dc09767587e43a81f6f10742fb80, type: 2}
+  ghostPrefab: {fileID: 100184, guid: 5e150eac25b83914cb8ad6b5a2d72f39, type: 2}
   numberOfGhosts: 0
   limitOfGhosts: 2
   nextSpawnState: 0

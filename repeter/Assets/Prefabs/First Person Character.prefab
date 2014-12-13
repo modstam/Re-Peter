@@ -211,8 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd25d8786a9d6db48aa4c65767826bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostPrefab: {fileID: 100000, guid: 4d64dc09767587e43a81f6f10742fb80, type: 2}
+  ghostPrefab: {fileID: 100184, guid: 5e150eac25b83914cb8ad6b5a2d72f39, type: 2}
   numberOfGhosts: 0
+  limitOfGhosts: 0
   nextSpawnState: 0
   nextSpawnTime: 0
 --- !u!114 &11400004

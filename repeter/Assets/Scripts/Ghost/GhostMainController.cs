@@ -113,7 +113,7 @@ public class GhostMainController : MonoBehaviour {
 					Material[] materials = renderer.materials;
 					foreach(Material material in materials){
 						Color color = material.color;
-						color.a = 1.0f - (1.0f/distance);
+						color.a = 1.0f- (1.0f/distance);
 						material.color = color;
 						//renderer.enabled = false;
 					}	
@@ -126,7 +126,7 @@ public class GhostMainController : MonoBehaviour {
 					Material[] materials = renderer.materials;
 					foreach(Material material in materials){
 						Color color = material.color;
-						color.a = 1.0f;
+						color.a = 0.45f;
 						material.color = color;
 						//renderer.enabled = true;
 					}	
