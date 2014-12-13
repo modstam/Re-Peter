@@ -9,9 +9,10 @@ public class PlatformMover : MonoBehaviour {
 	public Transform destination;
 	public float speed = 0.1f; // movements per second
 	bool moveToDest = false;
-
 	public List<Rigidbody> objectsOnPlatform = new List<Rigidbody>();
-	
+
+
+
 	void OnTriggerEnter(Collider other) {
 		moveToDest = true;
 	}
@@ -28,6 +29,10 @@ public class PlatformMover : MonoBehaviour {
 				StickyPlatform stickyPlatform = platform.gameObject.GetComponent<StickyPlatform>();
 				if(stickyPlatform){
 					stickyPlatform.moveTowards(destination.position, speed);
+
+
+						
+					
 				}
 			}
 		} else {
@@ -35,6 +40,7 @@ public class PlatformMover : MonoBehaviour {
 				StickyPlatform stickyPlatform = platform.gameObject.GetComponent<StickyPlatform>();
 				if(stickyPlatform){
 					stickyPlatform.moveTowards(origin.position, speed);
+				
 				}
 			}
 		}

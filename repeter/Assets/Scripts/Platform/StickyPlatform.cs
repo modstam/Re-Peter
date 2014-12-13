@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 public class StickyPlatform : MonoBehaviour {
 
-	
 	// Use this for initialization
 	void Start () {
 	
@@ -39,5 +38,7 @@ public class StickyPlatform : MonoBehaviour {
 			collision.gameObject.transform.parent = null; //remove the rigidbody from this platform
 		}
 	}
+
+
 
 }
