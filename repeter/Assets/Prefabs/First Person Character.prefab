@@ -213,7 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostPrefab: {fileID: 100184, guid: 5e150eac25b83914cb8ad6b5a2d72f39, type: 2}
   numberOfGhosts: 0
-  limitOfGhosts: 0
+  limitOfGhosts: 2
   nextSpawnState: 0
   nextSpawnTime: 0
 --- !u!114 &11400004
@@ -320,9 +320,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .500000119
-  m_Height: 2
+  m_Height: 1.79999995
   m_Direction: 1
-  m_Center: {x: 5.96046448e-08, y: 0, z: -8.94069672e-08}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
