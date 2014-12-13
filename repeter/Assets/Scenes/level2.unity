@@ -626,6 +626,7 @@ GameObject:
   - 114: {fileID: 115547115}
   - 114: {fileID: 115547114}
   - 136: {fileID: 115547113}
+  - 65: {fileID: 115547122}
   - 114: {fileID: 115547112}
   - 82: {fileID: 115547111}
   - 114: {fileID: 115547121}
@@ -736,9 +737,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .500000119
-  m_Height: 2
+  m_Height: 1.79999995
   m_Direction: 1
-  m_Center: {x: 5.96046448e-08, y: 0, z: -8.94069672e-08}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &115547114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,9 +768,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd25d8786a9d6db48aa4c65767826bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostPrefab: {fileID: 100000, guid: 4d64dc09767587e43a81f6f10742fb80, type: 2}
+  ghostPrefab: {fileID: 100184, guid: 5e150eac25b83914cb8ad6b5a2d72f39, type: 2}
   numberOfGhosts: 0
-  limitOfGhosts: 0
+  limitOfGhosts: 2
   nextSpawnState: 0
   nextSpawnTime: 0
   gcs: []
@@ -875,6 +876,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riftCameraPrefab: {fileID: 805199983}
+--- !u!65 &115547122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: 273ba7d6189e6bb48a2cd3afb349f615,
+    type: 2}
+  m_PrefabInternal: {fileID: 984665288}
+  m_GameObject: {fileID: 115547109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .200000003, y: 1.79999995, z: .200000003}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &124947488
 GameObject:
   m_ObjectHideFlags: 0
@@ -6391,7 +6405,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
       propertyPath: m_Enabled
@@ -6440,6 +6454,14 @@ Prefab:
     - target: {fileID: 11400000, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
       propertyPath: recordingInterval
       value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
+      propertyPath: m_Size.x
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
+      propertyPath: m_Size.z
+      value: .200000003
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400010, guid: 273ba7d6189e6bb48a2cd3afb349f615, type: 2}
@@ -10130,7 +10152,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45635d5190a12bc4884469b7dcafa846, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 45635d5190a12bc4884469b7dcafa846, type: 2}
       propertyPath: m_StaticEditorFlags

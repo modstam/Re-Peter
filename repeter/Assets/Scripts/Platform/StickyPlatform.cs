@@ -26,6 +26,13 @@ public class StickyPlatform : MonoBehaviour {
 			collision.gameObject.transform.parent = this.transform; //add this rigidbody as a child of this platform
 		}
 	}
+
+	void OnCollisionStay(Collision collision){
+		if(collision.gameObject.rigidbody){ //Does this object have a rigid body?
+			//Debug.Log("Rigidbody on platform");
+			collision.gameObject.transform.parent = this.transform; //add this rigidbody as a child of this platform
+        }
+    }
 	
 	void OnCollisionExit(Collision collision){
 		if(collision.gameObject.rigidbody){ //Does this object have a rigid body?
