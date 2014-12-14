@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 public class StickyPlatform : MonoBehaviour {
 
+
+
+
 	// Use this for initialization
 	void Start () {
 	
