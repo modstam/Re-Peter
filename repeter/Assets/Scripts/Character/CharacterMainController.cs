@@ -19,6 +19,7 @@ public class CharacterMainController : MonoBehaviour {
 	public List<GhostState> ghosts = new List<GhostState>();
 	public List<GhostMainController> gcs = new List<GhostMainController>();
 	private bool cantSpawn = false;
+	public bool hitTriggerThisFrame = false;
 	
 
 	bool initComplete = false;
@@ -167,6 +168,14 @@ public class CharacterMainController : MonoBehaviour {
 
 		foreach(GameObject ghost in ghosts){
 			Physics.IgnoreCollision(ghost.collider, this.collider, true);
+		}
+	}
+
+
+	void OnCollisionEnter(Collision c){
+		if(c.gameObject.tag.Equals("Trigger")){
+			Debug.Log ("Hit trigger");
+			hitTriggerThisFrame = true;
 		}
 	}
 	

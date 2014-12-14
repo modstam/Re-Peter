@@ -59,7 +59,7 @@ public class TimeLine : MonoBehaviour {
 
 	}
 	
-	public void placeEvent(string e, float time){
+	public void placeEvent(string e, Color color, float time){
 		isRunning = true;
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
 		LineRenderWrapper line = new LineRenderWrapper();
@@ -68,7 +68,7 @@ public class TimeLine : MonoBehaviour {
 		line.line = line.gameObject.AddComponent<LineRenderer>();
 		if(line.line && line.gameObject){
 			line.line.material = material;
-			line.line.material.color = Color.red;
+			line.line.material.color = color;
 			line.line.SetWidth(0.1F, 0.1F);
 			line.line.SetVertexCount(2);
 			line.line.useWorldSpace = false;

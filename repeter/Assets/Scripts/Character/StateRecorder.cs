@@ -19,10 +19,12 @@ public class StateRecorder : MonoBehaviour {
 	void Update () {
 			
 		if((currentTime - lastRecordTime) > recordingInterval){
-			FirstPersonCharacter controller = GetComponent<FirstPersonCharacter>();
+			FirstPersonCharacter character = GetComponent<FirstPersonCharacter>();
+			CharacterMainController controller = GetComponent<CharacterMainController>();
 			TransformData data = new TransformData();
 			data.Clone (this.transform);
-			states.Add(new State(currentTime, data, rigidbody.velocity, controller.jumpedThisFrame, controller.grounded));
+			states.Add(new State(currentTime, data, rigidbody.velocity, character.jumpedThisFrame, character.grounded, controller.hitTriggerThisFrame));
+			controller.hitTriggerThisFrame = false;
 			currentStates++;
 			lastRecordTime = currentTime;
 			//Debug.Log("State added");

@@ -8,8 +8,9 @@ public class State {
 	public Vector3 velocity = new Vector3();
 	public bool jump;
 	public bool grounded;
+	public bool hitTrigger;
 
-	public State(float time, TransformData transform, Vector3 velocity, bool jump, bool isGrounded){
+	public State(float time, TransformData transform, Vector3 velocity, bool jump, bool isGrounded, bool hitTrigger){
 		this.stateTime = time;
 		this.stateTransform = transform;
 		this.velocity.x = velocity.x;
@@ -17,6 +18,7 @@ public class State {
 		this.velocity.z = velocity.z;
 		this.jump = jump;
 		this.grounded = isGrounded;
+		this.hitTrigger = hitTrigger;
 	}
 	
 	public Vector3 getPosition(){
