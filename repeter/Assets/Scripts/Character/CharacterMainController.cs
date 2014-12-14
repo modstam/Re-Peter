@@ -48,7 +48,7 @@ public class CharacterMainController : MonoBehaviour {
 			} else {
 				cantSpawnOn();
 				Invoke("cantSpawnOff", 3);
-			}				
+			}
 		}
 
 		if(Input.GetButtonDown("ResetGhost")){

@@ -20,6 +20,17 @@ public class ResetPositions : MonoBehaviour {
 		}
 		
 	}
+
+	public void Update(){
+		// This sould be called from another script if you want to call Reset remotley
+		//((ResetPositions) GameObject.Find("Dynamic").GetComponent(typeof(ResetPositions))).Reset ();
+
+
+		if (Input.GetButtonDown ("SpawnGhost")) {
+			Debug.Log("posList: " + posList.Length);
+			Reset();
+			}
+		}
 	
 	public void Reset(){
 		for(int i = 0; i < transforms.Length; i++) {
