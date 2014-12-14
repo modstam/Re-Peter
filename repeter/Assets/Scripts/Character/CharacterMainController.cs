@@ -22,6 +22,9 @@ public class CharacterMainController : MonoBehaviour {
 	
 
 	bool initComplete = false;
+
+
+
 	// Use this for initialization
 	void Start () {
 		setSpawnPoint ();

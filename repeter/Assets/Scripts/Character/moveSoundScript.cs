@@ -30,6 +30,7 @@ public class moveSoundScript : MonoBehaviour {
 		Vector3 prevVelocity = Vector3.zero;				// the velocity from last frame
 		bool prevGrounded = true;							// whether the character was grounded last frame
 		
+
 		
 		// Use this for initialization
 		void Start () {

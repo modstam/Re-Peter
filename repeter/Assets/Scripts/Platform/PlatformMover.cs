@@ -12,9 +12,25 @@ public class PlatformMover : MonoBehaviour {
 	public List<Rigidbody> objectsOnPlatform = new List<Rigidbody>();
 
 
+	//use sound effects
+	public AudioClip[] audioClip;
+	
+	void PlaySound(int clip)
+	{
+		audio.clip = audioClip [clip];
+		audio.Play ();
+	}
+
+
 
 	void OnTriggerEnter(Collider other) {
 		moveToDest = true;
+
+		if (other.transform.tag == "Player") {
+			PlaySound(0);
+		}
+
+
 	}
 		
 	void OnTriggerExit(Collider other) {

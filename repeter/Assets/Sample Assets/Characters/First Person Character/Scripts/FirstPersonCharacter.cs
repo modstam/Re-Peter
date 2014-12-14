@@ -49,7 +49,9 @@ public class FirstPersonCharacter : MonoBehaviour
 	Color[] virtualObjects;
 	public static bool seeVirtual;
 
-	
+
+
+
 	void Awake ()
 	{
 		// Set up a reference to the capsule collider.
@@ -192,8 +194,7 @@ public class FirstPersonCharacter : MonoBehaviour
 		// add extra gravity
 		rigidbody.AddForce(Physics.gravity * (advanced.gravityMultiplier - 1));
 	}
-
-	
+	 
 	
 
 	//used for comparing distances

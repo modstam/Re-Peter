@@ -8,6 +8,9 @@ public class loadLevel : MonoBehaviour {
 	public int levelnum;
 
 
+	
+
+
 	// Use this for initialization
 	void Start () {
 	
@@ -19,6 +22,7 @@ public class loadLevel : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other) {
+
 		Debug.Log("completed level");
 		Application.LoadLevel(levelnum); //TODO change this
 	}

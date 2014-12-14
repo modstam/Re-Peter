@@ -25,6 +25,8 @@ public class CharacterMovement : MonoBehaviour {
 
 	private Vector3 moveDirection = Vector3.zero;
 
+
+
 	void Update() {
 
 		UpdateCamera();
