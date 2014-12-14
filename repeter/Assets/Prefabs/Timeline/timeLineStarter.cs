@@ -25,11 +25,15 @@ public class timeLineStarter : MonoBehaviour {
 				for(int i = start; i < end; i++){
 					State state = states[i];
 					if(state.jump){
-						timeLine.placeEvent("Jump", Color.red, state.stateTime- startTime);
+						timeLine.placeEvent("Jump", Color.yellow, state.stateTime- startTime);
 					}
 					if(state.hitTrigger){
-						timeLine.placeEvent("Trigger", Color.yellow, state.stateTime- startTime);
+						timeLine.placeEvent("Trigger", Color.green, state.stateTime- startTime);
 					}
+					if(state.exitTrigger){
+						timeLine.placeEvent("Trigger", Color.red, state.stateTime- startTime);
+					}
+
 				}
 				return;
 			}

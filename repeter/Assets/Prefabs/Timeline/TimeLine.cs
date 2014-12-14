@@ -52,8 +52,8 @@ public class TimeLine : MonoBehaviour {
 		greenLine.line.SetWidth(0.1F, 0.1F);
 		greenLine.line.SetVertexCount(2);
 		greenLine.line.useWorldSpace = false;
-		greenLine.start = new Vector3(anchorLeft, (mesh.bounds.max.y/hScale+0.25f), -0.65f);
-		greenLine.end = new Vector3(anchorLeft, -(mesh.bounds.max.y/hScale+0.25f), -0.65f);
+		greenLine.start = new Vector3(anchorLeft, (mesh.bounds.max.y/hScale+0.50f), -0.65f);
+		greenLine.end = new Vector3(anchorLeft, -(mesh.bounds.max.y/hScale+0.50f), -0.65f);
 		//line.start = new Vector3(0,1,-0.65f);
 		//line.end = new Vector3(0,-1,-0.65f);
 		greenLine.line.SetColors(Color.green, Color.green);
@@ -86,11 +86,11 @@ public class TimeLine : MonoBehaviour {
 		if(line.line && line.gameObject){
 			line.line.material = material;
 			line.line.material.color = color;
-			line.line.SetWidth(0.1F, 0.1F);
+			line.line.SetWidth(0.15F, 0.15F);
 			line.line.SetVertexCount(2);
 			line.line.useWorldSpace = false;
-			line.start = new Vector3(anchorLeft + time , +(mesh.bounds.max.y/hScale), -0.6f);
-			line.end = new Vector3(anchorLeft + time, -(mesh.bounds.max.y/hScale), -0.6f);
+			line.start = new Vector3(anchorLeft + time , +((mesh.bounds.max.y/hScale)), -0.6f);
+			line.end = new Vector3(anchorLeft + time, -((mesh.bounds.max.y/hScale)), -0.6f);
 			line.line.SetColors(Color.black, Color.black);
 			events.Add (line);
 		}
@@ -107,8 +107,8 @@ public class TimeLine : MonoBehaviour {
 //			line.start.x = mesh.bounds.min.y;
 //			line.end.x = mesh.bounds.min.y;
 
-			line.start.y = +(mesh.bounds.max.y/hScale);
-			line.end.y = -(mesh.bounds.max.y/hScale);
+			line.start.y = +(mesh.bounds.max.y/hScale +0.4f);
+			line.end.y = -(mesh.bounds.max.y/hScale + 0.4f);
 		}
 	}
 

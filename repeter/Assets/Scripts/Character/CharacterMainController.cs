@@ -20,6 +20,7 @@ public class CharacterMainController : MonoBehaviour {
 	public List<GhostMainController> gcs = new List<GhostMainController>();
 	private bool cantSpawn = false;
 	public bool hitTriggerThisFrame = false;
+	public bool exitTriggerThisFrame = false;
 	
 
 	bool initComplete = false;
@@ -180,6 +181,13 @@ public class CharacterMainController : MonoBehaviour {
 		if(c.gameObject.tag.Equals("Trigger")){
 			Debug.Log ("Hit trigger");
 			hitTriggerThisFrame = true;
+		}
+	}
+
+	void OnCollisionExit(Collision c){
+		if(c.gameObject.tag.Equals("Trigger")){
+			Debug.Log ("Exit trigger");
+			exitTriggerThisFrame = true;
 		}
 	}
 	

@@ -23,8 +23,9 @@ public class StateRecorder : MonoBehaviour {
 			CharacterMainController controller = GetComponent<CharacterMainController>();
 			TransformData data = new TransformData();
 			data.Clone (this.transform);
-			states.Add(new State(currentTime, data, rigidbody.velocity, character.jumpedThisFrame, character.grounded, controller.hitTriggerThisFrame));
+			states.Add(new State(currentTime, data, rigidbody.velocity, character.jumpedThisFrame, character.grounded, controller.hitTriggerThisFrame, controller.exitTriggerThisFrame));
 			controller.hitTriggerThisFrame = false;
+			controller.exitTriggerThisFrame = false;
 			currentStates++;
 			lastRecordTime = currentTime;
 			//Debug.Log("State added");
