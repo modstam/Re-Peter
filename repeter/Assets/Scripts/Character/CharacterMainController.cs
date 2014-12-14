@@ -167,7 +167,11 @@ public class CharacterMainController : MonoBehaviour {
 		GameObject[] ghosts = GameObject.FindGameObjectsWithTag("Ghost");
 
 		foreach(GameObject ghost in ghosts){
-			Physics.IgnoreCollision(ghost.collider, this.collider, true);
+			Collider capsule = GetComponent<CapsuleCollider>();
+			Collider box = GetComponent<BoxCollider>();
+
+			Physics.IgnoreCollision(ghost.collider, capsule, true);
+			Physics.IgnoreCollision(ghost.collider, box, true);
 		}
 	}
 

@@ -5,12 +5,15 @@ public class TimeLine : MonoBehaviour {
 
 	public Vector3 startPosition;
 	public Vector3 endPosition;
-	private float anchorLeft;
+	public float anchorLeft = 0f;
 	public Material material;
 	private LineRenderWrapper timeLine;
+	private LineRenderWrapper greenLine;
 	private List<LineRenderWrapper> events = new List<LineRenderWrapper>();
 	public float hScale = 3.0f;
 	public bool isRunning = false;
+	public float angleRatio;
+	public float yAngle;
 	// Use this for initialization
 	void Start () {
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
@@ -20,7 +23,10 @@ public class TimeLine : MonoBehaviour {
 			Debug.Log("TimeLine: Line couldn't be instantiated");
 			return;
 		}
-		anchorLeft = (mesh.bounds.min.x * transform.localScale.x)-1f;
+		angleRatio = (1f-(transform.rotation.eulerAngles.y)/90f);
+		//anchorLeft = (mesh.bounds.min.x*transform.localScale.x)*angleRatio ;
+		yAngle = transform.rotation.eulerAngles.y;
+		//anchorLeft = renderer.bounds.min.x;
 		timeLine.line.material = material;
 		timeLine.line.material.color = Color.black;
 		timeLine.line.SetColors(Color.black, Color.black);
@@ -28,21 +34,31 @@ public class TimeLine : MonoBehaviour {
 		timeLine.line.SetVertexCount(2);
 		timeLine.line.useWorldSpace = false;
 
+		startPosition = new Vector3(mesh.bounds.min.x, 0, -0.5f);
+		endPosition = new Vector3(mesh.bounds.max.x, 0, -0.5f);
+		
+		timeLine.line.SetPosition(0,startPosition);
+		timeLine.line.SetPosition(1,endPosition);
 
-		LineRenderWrapper line = new LineRenderWrapper();
-		line.gameObject = new GameObject("GreenLine");
-		line.gameObject.transform.parent = this.transform;
-		line.line = line.gameObject.AddComponent<LineRenderer>();
-		line.line.material = material;
-		line.line.material.color = Color.green;
-		line.line.SetWidth(0.1F, 0.1F);
-		line.line.SetVertexCount(2);
-		line.line.useWorldSpace = false;
-		line.start = new Vector3(anchorLeft, transform.position.y+(mesh.bounds.max.y/hScale+0.25f), transform.position.z-0.65f);
-		line.end = new Vector3(anchorLeft, transform.position.y-(mesh.bounds.max.y/hScale+0.25f), transform.position.z-0.65f);
-		line.line.SetColors(Color.green, Color.green);
-		line.line.SetPosition(0,line.start);
-		line.line.SetPosition(1,line.end);
+
+		greenLine = new LineRenderWrapper();
+		greenLine.gameObject = new GameObject("GreenLine");
+		greenLine.gameObject.transform.parent = this.transform;
+		greenLine.gameObject.transform.position = transform.position;
+		greenLine.gameObject.transform.rotation = transform.rotation;
+		greenLine.line = greenLine.gameObject.AddComponent<LineRenderer>();
+		greenLine.line.material = material;
+		greenLine.line.material.color = Color.green;
+		greenLine.line.SetWidth(0.1F, 0.1F);
+		greenLine.line.SetVertexCount(2);
+		greenLine.line.useWorldSpace = false;
+		greenLine.start = new Vector3(anchorLeft, (mesh.bounds.max.y/hScale+0.25f), -0.65f);
+		greenLine.end = new Vector3(anchorLeft, -(mesh.bounds.max.y/hScale+0.25f), -0.65f);
+		//line.start = new Vector3(0,1,-0.65f);
+		//line.end = new Vector3(0,-1,-0.65f);
+		greenLine.line.SetColors(Color.green, Color.green);
+		greenLine.line.SetPosition(0,greenLine.start);
+		greenLine.line.SetPosition(1,greenLine.end);
 
 	}
 
@@ -55,7 +71,6 @@ public class TimeLine : MonoBehaviour {
 	
 		updateEvents();
 		drawEvents();
-		drawTimeLine();
 
 	}
 	
@@ -65,6 +80,8 @@ public class TimeLine : MonoBehaviour {
 		LineRenderWrapper line = new LineRenderWrapper();
 		line.gameObject = new GameObject("Line");
 		line.gameObject.transform.parent = this.transform;
+		line.gameObject.transform.position = transform.position;
+		line.gameObject.transform.rotation = transform.rotation;
 		line.line = line.gameObject.AddComponent<LineRenderer>();
 		if(line.line && line.gameObject){
 			line.line.material = material;
@@ -72,8 +89,8 @@ public class TimeLine : MonoBehaviour {
 			line.line.SetWidth(0.1F, 0.1F);
 			line.line.SetVertexCount(2);
 			line.line.useWorldSpace = false;
-			line.start = new Vector3(anchorLeft + time , transform.position.y+(mesh.bounds.max.y/hScale), transform.position.z-0.6f);
-			line.end = new Vector3(anchorLeft + time, transform.position.y-(mesh.bounds.max.y/hScale), transform.position.z-0.6f);
+			line.start = new Vector3(anchorLeft + time , +(mesh.bounds.max.y/hScale), -0.6f);
+			line.end = new Vector3(anchorLeft + time, -(mesh.bounds.max.y/hScale), -0.6f);
 			line.line.SetColors(Color.black, Color.black);
 			events.Add (line);
 		}
@@ -90,8 +107,8 @@ public class TimeLine : MonoBehaviour {
 //			line.start.x = mesh.bounds.min.y;
 //			line.end.x = mesh.bounds.min.y;
 
-			line.start.y = transform.position.y+(mesh.bounds.max.y/hScale);
-			line.end.y = transform.position.y-(mesh.bounds.max.y/hScale);
+			line.start.y = +(mesh.bounds.max.y/hScale);
+			line.end.y = -(mesh.bounds.max.y/hScale);
 		}
 	}
 
@@ -119,19 +136,6 @@ public class TimeLine : MonoBehaviour {
 		}
 	}
 
-	void drawTimeLine(){
-
-
-//		startPosition = new Vector3(renderer.bounds.min.x, transform.position.y, transform.position.z-0.5f);
-//		endPosition = new Vector3(renderer.bounds.max.x, transform.position.y, transform.position.z-0.5f);
-
-		Mesh mesh = GetComponent<MeshFilter>().mesh;
-		startPosition = new Vector3(mesh.bounds.min.x, 0, -0.5f);
-		endPosition = new Vector3(mesh.bounds.max.x, 0, -0.5f);
-
-		timeLine.line.SetPosition(0,startPosition);
-		timeLine.line.SetPosition(1,endPosition);
-	}
 
 	public void reset(){
 		isRunning = false;
