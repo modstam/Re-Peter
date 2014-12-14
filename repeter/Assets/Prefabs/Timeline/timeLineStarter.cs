@@ -28,10 +28,10 @@ public class timeLineStarter : MonoBehaviour {
 						timeLine.placeEvent("Jump", Color.yellow, state.stateTime- startTime);
 					}
 					if(state.hitTrigger){
-						timeLine.placeEvent("OnTrigger", Color.green, state.stateTime- startTime);
+						timeLine.placeEvent("OnTrigger", state.color, state.stateTime- startTime);
 					}
 					if(state.exitTrigger){
-						timeLine.placeEvent("Trigger", Color.red, state.stateTime- startTime);
+						timeLine.placeEvent("ExitTrigger", Color.red, state.stateTime- startTime);
 					}
 
 				}

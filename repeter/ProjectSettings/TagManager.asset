@@ -12,6 +12,8 @@ TagManager:
   - Button1
   - Ghost
   - Trigger
+  - TriggerBlue
+  - TriggerGreen
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

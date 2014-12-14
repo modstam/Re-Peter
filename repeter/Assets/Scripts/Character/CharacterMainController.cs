@@ -179,14 +179,20 @@ public class CharacterMainController : MonoBehaviour {
 
 
 	void OnCollisionEnter(Collision c){
-		if(c.gameObject.tag.Equals("Trigger")){
+		if(c.gameObject.tag.Equals("TriggerBlue")){
 			Debug.Log ("Hit trigger");
 			hitTriggerThisFrame = true;
+			triggerColor = Color.blue;
+		}
+		if(c.gameObject.tag.Equals("TriggerGreen")){
+			Debug.Log ("Hit trigger");
+			hitTriggerThisFrame = true;
+			triggerColor = Color.green;
 		}
 	}
 
 	void OnCollisionExit(Collision c){
-		if(c.gameObject.tag.Equals("Trigger")){
+		if(c.gameObject.tag.Equals("TriggerBlue") || c.gameObject.tag.Equals("TriggerGreen") ){
 			Debug.Log ("Exit trigger");
 			exitTriggerThisFrame = true;
 			hitTriggerThisFrame = false;
