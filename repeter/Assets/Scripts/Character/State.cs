@@ -10,8 +10,9 @@ public class State {
 	public bool grounded;
 	public bool hitTrigger;
 	public bool exitTrigger;
+	public Color color;
 
-	public State(float time, TransformData transform, Vector3 velocity, bool jump, bool isGrounded, bool hitTrigger, bool exitTrigger){
+	public State(float time, TransformData transform, Vector3 velocity, bool jump, bool isGrounded, bool hitTrigger, bool exitTrigger, Color color){
 		this.stateTime = time;
 		this.stateTransform = transform;
 		this.velocity.x = velocity.x;
@@ -21,6 +22,7 @@ public class State {
 		this.grounded = isGrounded;
 		this.hitTrigger = hitTrigger;
 		this.exitTrigger = exitTrigger;
+		this.color = color;
 	}
 	
 	public Vector3 getPosition(){

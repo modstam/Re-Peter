@@ -20,6 +20,7 @@ public class CharacterMainController : MonoBehaviour {
 	public List<GhostMainController> gcs = new List<GhostMainController>();
 	private bool cantSpawn = false;
 	public bool hitTriggerThisFrame = false;
+	public Color triggerColor = Color.black;
 	public bool exitTriggerThisFrame = false;
 	
 
@@ -188,6 +189,7 @@ public class CharacterMainController : MonoBehaviour {
 		if(c.gameObject.tag.Equals("Trigger")){
 			Debug.Log ("Exit trigger");
 			exitTriggerThisFrame = true;
+			hitTriggerThisFrame = false;
 		}
 	}
 	

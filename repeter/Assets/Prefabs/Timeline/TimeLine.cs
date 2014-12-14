@@ -87,6 +87,10 @@ public class TimeLine : MonoBehaviour {
 			line.line.material = material;
 			line.line.material.color = color;
 			line.line.SetWidth(0.15F, 0.15F);
+			if(e == "OnTrigger"){
+				line.line.SetWidth(0.05F, 0.05F);
+			}
+
 			line.line.SetVertexCount(2);
 			line.line.useWorldSpace = false;
 			line.start = new Vector3(anchorLeft + time , +((mesh.bounds.max.y/hScale)), -0.6f);
