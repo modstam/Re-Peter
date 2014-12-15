@@ -88,7 +88,7 @@ public class TimeLine : MonoBehaviour {
 			line.line.material.color = color;
 			line.line.SetWidth(0.15F, 0.15F);
 			if(e == "OnTrigger"){
-				line.line.SetWidth(0.05F, 0.05F);
+				line.line.SetWidth(0.1F, 0.1F);
 			}
 
 			line.line.SetVertexCount(2);
