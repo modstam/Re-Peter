@@ -2,7 +2,8 @@
 
 This is a adventure puzzle game for PC compatible with oculus rift. 
 
-http://www.csc.kth.se/~robinch/game-design/#/ \n
+http://www.csc.kth.se/~robinch/game-design/#/ 
+
 https://www.youtube.com/watch?v=qFAQttQEZk4
 
 ## Setup:
